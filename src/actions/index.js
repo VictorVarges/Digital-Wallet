@@ -1,3 +1,3 @@
-const addAction = (value) => ({ type: 'FUTURE_ACTION', value });
+export const LOGIN = 'LOGIN';
 
-export default addAction;
+export const addAction = (payload) => ({ type: LOGIN, payload });
