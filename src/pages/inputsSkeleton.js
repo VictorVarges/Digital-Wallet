@@ -1,18 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { fetchRequisition } from '../actions';
 
 class FormWallet extends React.Component {
-  componentDidMount() {
-    const { requisitonCurrencies } = this.props;
-    requisitonCurrencies();
-  }
-
   render() {
     // const methods = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
     // const tags = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
-    const { currencies } = this.props;
     return (
       <header>
         <form>
@@ -23,11 +14,7 @@ class FormWallet extends React.Component {
           <label htmlFor="currency">
             Moeda
             <select id="currency" name="currency">
-              { currencies.map((option, index) => (
-                <option value={ option } key={ index }>
-                  { option }
-                </option>
-              )) }
+              <option>BRL</option>
             </select>
           </label>
           <label htmlFor="method">
@@ -59,18 +46,4 @@ class FormWallet extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  email: state.user.email,
-  currencies: state.wallet.currencies,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  requisitonCurrencies: () => dispatch(fetchRequisition()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(FormWallet);
-
-FormWallet.propTypes = {
-  requisitonCurrencies: PropTypes.func.isRequired,
-  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
+export default FormWallet;
