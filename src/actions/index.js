@@ -1,4 +1,4 @@
-import fetchCurrencies from '../pages/validateAPI';
+import { fetchCurrencies, descriptionCurrencies } from '../pages/validateAPI';
 
 export const LOGIN = 'LOGIN';
 export const WALLET = 'WALLET';
@@ -13,4 +13,9 @@ const saveCurrencies = (payload) => ({ type: SAVE_CURRENCY, payload });
 export const fetchRequisition = () => async (dispatch) => {
   const resultCurrencies = await fetchCurrencies();
   dispatch(saveCurrencies(resultCurrencies));
+};
+
+export const fetchDescriptions = (saveState) => async (dispatch) => {
+  const exchangeRates = await descriptionCurrencies();
+  dispatch(addWallet({ ...saveState, exchangeRates }));
 };

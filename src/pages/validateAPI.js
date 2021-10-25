@@ -1,4 +1,4 @@
-const fetchCurrencies = async () => {
+export const fetchCurrencies = async () => {
   const request = await fetch('https://economia.awesomeapi.com.br/json/all');
   const json = await request.json();
   const jsonArray = Object.keys(json);
@@ -6,4 +6,14 @@ const fetchCurrencies = async () => {
     .filter((currencies) => currencies !== 'USDT' && currencies !== 'DOGE');
 };
 
-export default fetchCurrencies;
+export const descriptionCurrencies = async () => {
+  const request = await fetch('https://economia.awesomeapi.com.br/json/all');
+  const json = await request.json();
+  if (json.USDT) {
+    delete json.USDT;
+  }
+  if (json.DOGE) {
+    delete json.DOGE;
+  }
+  return json;
+};

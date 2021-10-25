@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 // pr como referência:  https://github.com/tryber/sd-014-a-project-trybewallet/pull/55/files
 class Header extends React.Component {
   render() {
-    const { email, totalExpenses, currencies } = this.props;
+    const { email, total, currencies } = this.props;
     const currencie = `BRL ${currencies}`;
     return (
       <header>
         <div>
           <h1 data-testid="email-field">{ email }</h1>
-          <h1 data-testid="total-field">{ totalExpenses }</h1>
+          <h1 data-testid="total-field">{ total }</h1>
           <h1 data-testid="header-currency-field">{ currencie }</h1>
         </div>
       </header>
@@ -28,11 +28,10 @@ const mapStateToProps = (state) => ({
 Header.propTypes = {
   email: PropTypes.string.isRequired,
   currencies: PropTypes.string,
-  totalExpenses: PropTypes.number,
+  total: PropTypes.number.isRequired,
 };
 
 Header.defaultProps = {
-  totalExpenses: 0,
   currencies: 'R$',
 };
 
